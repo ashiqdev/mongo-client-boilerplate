@@ -1,7 +1,5 @@
 const { getConectedClient } = require('../helpers/db-helper/db');
 
-// exports.collection = client.db('organicdb').collection('products');
-
 function getCollection() {
   const client = getConectedClient();
   const collection = client.db('organicdb').collection('products');
