@@ -1,8 +1,16 @@
-const app = require('./app');
-const API_PORT = 7777;
+const { connect } = require('./helpers/db-helper/db');
+const { app, start } = require('./app');
 
-app.set('port', API_PORT || 7777);
+connect()
+  .then(() => {
+    const API_PORT = 7777;
 
-const server = app.listen(app.get('port'), async () => {
-  console.log(`Express running → PORT ${server.address().port}`);
-});
+    app.set('port', API_PORT || 7777);
+    const server = app.listen(app.get('port'), () => {
+      start();
+      console.log(`Express running → PORT ${server.address().port}`);
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+  });

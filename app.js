@@ -1,10 +1,13 @@
 const express = require('express');
-const configureRoutes = require('./controllers');
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-configureRoutes(app);
+const start = () => {
+  console.log('started');
+  const configureRoutes = require('./controllers/routes');
+  app.use(configureRoutes);
+};
 
-module.exports =  app;
+module.exports = { app, start };
