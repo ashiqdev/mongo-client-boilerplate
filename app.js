@@ -1,5 +1,5 @@
 const express = require('express');
-// const configureRoutes = require('./controllers');
+const configureRoutes = require('./controllers');
 const app = express();
 
 app.use(express.json());

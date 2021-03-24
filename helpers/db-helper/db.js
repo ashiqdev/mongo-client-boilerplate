@@ -11,7 +11,7 @@ const mongodbOptions = {
 
 let client;
 
-async function connect() {
+async function getClient() {
   if (!client) {
     client = await MongoClient.connect(DATABASE, mongodbOptions).catch((err) =>
       console.log(err)
@@ -20,6 +20,22 @@ async function connect() {
   return client;
 }
 
-const getConectedClient = () => client;
 
-module.exports = { connect, getConectedClient };
+
+module.exports = { getClient };
+
+// const connectWithMongoDb = (client) => {
+//   client.connect((err, connection) => {
+//     if (err) {
+//       throw err;
+//     } else {
+//       console.log('db connected', connection);
+//     }
+//   });
+// };
+
+// const client = MongoClient.connect(DATABASE, mongodbOptions)
+//   .then()
+//   .catch((err) => console.log(err));
+
+// module.exports = { client, connectWithMongoDb };

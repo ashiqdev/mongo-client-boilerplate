@@ -1,11 +1,12 @@
-const { getConectedClient } = require('../helpers/db-helper/db');
+const { getClient} = require('../helpers/db-helper/db');
 
-function getCollection() {
-  const client = getConectedClient();
-  console.log({client})
+// exports.collection = client.db('organicdb').collection('products');
+
+async function getCollection() {
+  const client = await getClient();
   const collection = client.db('organicdb').collection('products');
 
   return collection;
 }
 
-module.exports = { getCollection };
+module.exports = {getCollection}
