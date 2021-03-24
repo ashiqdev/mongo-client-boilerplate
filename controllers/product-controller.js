@@ -6,6 +6,7 @@ const router = express.Router();
 const getHandler = async (req, res) => {
   // get products by calling db
   const products = await getProducts();
+  console.log(products);
   res.status(200).send(products);
 };
 
